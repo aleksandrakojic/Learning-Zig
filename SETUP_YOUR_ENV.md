@@ -67,11 +67,11 @@ The silver lining? Zig makes it ridiculously easy to switch between versions or 
 
 ### Linux: The land of choices 
 
-If you're running Linux, you're probably no stranger to making choices (and sometimes, too many). For the sake of convenience, let's start with the easy option: your distribution's package manager. Most major Linux distros package the latest release of Zig, so why not give your fingertips a rest and install it the easy way?  And if you're curious about all the package managers with Zig available, you can find the complete list at this [link] (https://github.com/ziqlang/zig/wiki/Install-Zig-from-a-Package-Manager).
+If you're running Linux, you're probably no stranger to making choices (and sometimes, too many). For the sake of convenience, let's start with the easy option: your distribution's package manager. Most major Linux distros package the latest release of Zig, so why not give your fingertips a rest and install it the easy way?  And if you're curious about all the package managers with Zig available, you can find the complete list at this [link] (https://github.com/ziglang/zig/wiki/Install-Zig-from-a-Package-Manager).
 
 But let's say you're the type who enjoys a bit more control, perhaps even a tinge of masochism. In that case, you can install Zig manually.
 
-First, you'll need to download a prebuilt version of Zig. The binaries are conveniently located on the Zig download page (https://ziqlang.org/download/#release-master). The "master" in the URL refers to the master branch, which contains the latest nightly builds. However, if you're looking for a specific version of Zig, such as 0.14.0, you can easily switch to that by using a URL like this one - https://ziglang.org/download/#release-0.14.0.
+First, you'll need to download a prebuilt version of Zig. The binaries are conveniently located on the Zig download page (https://ziglang.org/download/#release-master). The "master" in the URL refers to the master branch, which contains the latest nightly builds. However, if you're looking for a specific version of Zig, such as 0.15.2, you can easily switch to that by using a URL like this one - https://ziglang.org/download/#release-0.15.2.
 
 Before you download, make sure you grab the right build for your CPU architecture. If you're not sure whether your machine is x86_64, arm64, or something else equally mysterious, you can find out by running: 
 
@@ -79,22 +79,22 @@ Before you download, make sure you grab the right build for your CPU architectur
 uname -m
 ```
 
-Once you know your architecture, you can use `wget` to download the Zig binary directly to your machine. For example, if you're grabbing the master branch build for x86_64, you would run: 
+Once you know your architecture, you can use `wget` to download the Zig binary directly to your machine. For example, if you're grabbing version 0.15.2 for x86_64, you would run:
 
 ```bash
-wget [https://ziglang.org/download/0.13.0/zig-linux-x86_64-0.14.0.tar.xz](https://www.google.com/search?q=https://ziglang.org/download/0.14.0/zig-linux-x86_64-0.13.0.tar.xz)
+wget https://ziglang.org/download/0.15.2/zig-linux-x86_64-0.15.2.tar.xz
 ```
 
 After the download completes, extract the archive with:
 
 ```bash
-tar xf zig-linux-x86_64-0.13.0.tar.xz
+tar xf zig-linux-x86_64-0.15.2.tar.xz
 ```
 
 Now, unless you want to be typing out the full path to your Zig binary every time (and trust me, you don't), you'll need to add Zig to your PATH:
 
 ```bash
-echo 'export PATH="$HOME/zig-linux-x86_64-0.14.0:$PATH"' >> ~/.bashrc
+echo 'export PATH="$HOME/zig-linux-x86_64-0.15.2:$PATH"' >> ~/.bashrc
 ```
 
 And there you have it! Zig on Linux is served just the way you like it.
@@ -128,27 +128,27 @@ But if you're the type who likes to take the road less traveled (or just enjoy u
 $Env:PROCESSOR_ARCHITECTURE
 ```
 
-After downloading, extract the files to a directory of your choice. Now comes the fun part: adding Zig to your PATH. For a system-wide installation, use: 
+After downloading, extract the files to a directory of your choice. Now comes the fun part: adding Zig to your PATH. For a system-wide installation, use:
 
 ```powershell
 [Environment]::SetEnvironmentVariable(
     "Path",
-    [Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\path\to\zig-windows-x86_64-0.13.0", # Replace with actual path
+    [Environment]::GetEnvironmentVariable("Path", "Machine") + ";C:\path\to\zig-windows-x86_64-0.15.2", # Replace with actual path
     "Machine"
 )
 ```
 
-Or, if you'd rather keep things local to your user: 
+Or, if you'd rather keep things local to your user:
 
 ```powershell
 [Environment]::SetEnvironmentVariable(
     "Path",
-    [Environment]::GetEnvironmentVariable("Path", "User") + ";C:\path\to\zig-windows-x86_64-0.13.0", # Replace with actual path
+    [Environment]::GetEnvironmentVariable("Path", "User") + ";C:\path\to\zig-windows-x86_64-0.15.2", # Replace with actual path
     "User"
-) 
+)
 ```
 
-Remember to replace `C:\path\to\zig-windows-x86_64-0.14.0` with the actual path where you extracted Zig. And yes, you need to do this step; otherwise, you'll be cursing your machine (with the full path to zig binary) every time you try to compile something.
+Remember to replace `C:\path\to\zig-windows-x86_64-0.15.2` with the actual path where you extracted Zig. And yes, you need to do this step; otherwise, you'll be cursing your machine (with the full path to zig binary) every time you try to compile something.
 
 ### Mac: The cult of brew 
 
@@ -162,16 +162,16 @@ And just like that, Zig is installed. Easy, right?
 
 ### Verifying your install 
 
-Now that you've gone through the motions, it's time to verify that Zig is ready to serve. Run: 
+Now that you've gone through the motions, it's time to verify that Zig is ready to serve. Run:
 
 ```bash
 zig version
 ```
 
-If everything goes well, you should see something like: 
+If everything goes well, you should see something like:
 
 ```
-0.14.0
+0.15.2
 ```
 
 ### BTW I use ~~Arch~~Nix
@@ -211,10 +211,10 @@ Now that you've got the source code, it's time to build ZLS. And guess what? Zig
 zig build -Doptimize=ReleaseSafe
 ```
 
-If you choose the path of a stable release, the ZLs should match the Zig version installed. If you have, for example, Zig 0.14.0, you should go with the ZLS 0.14.0. The easiest way to do it is to `git checkout` the proper tag before building:
+If you choose the path of a stable release, the ZLS should match the Zig version installed. If you have, for example, Zig 0.15.2, you should go with the ZLS 0.15.2. The easiest way to do it is to `git checkout` the proper tag before building:
 
 ```bash
-git checkout 0.14.0 && zig build -Doptimize=ReleaseSafe
+git checkout 0.15.2 && zig build -Doptimize=ReleaseSafe
 ```
 
 Whatever the path you choose, the command compiles ZLS in release mode and is optimized for safety and efficiency. Before you know it, you'll have a shiny new ZLS binary ready to go. With ZLS built and ready, it's time to integrate it into your coding workflow.
@@ -335,11 +335,11 @@ If you're wondering where to put this configuration file, ZLS has you covered. S
 zls env
 ```
 
-This command will give you a detailed output showing where ZLS searches for the configuration file. Typically, ZLS first checks the local `config_dir` (usually something like `/home/youruser/.config`) and then falls back to the global config dir (often `/etc/xdg`). Once you've placed your `zls.json` in the appropriate location, you can verify it by running `zls env` again, and you should see something like this: 
+This command will give you a detailed output showing where ZLS searches for the configuration file. Typically, ZLS first checks the local `config_dir` (usually something like `/home/youruser/.config`) and then falls back to the global config dir (often `/etc/xdg`). Once you've placed your `zls.json` in the appropriate location, you can verify it by running `zls env` again, and you should see something like this:
 
 ```json
 {
-    "version": "0.14.0-dev.50+3354fdcb",
+    "version": "0.15.2",
     "global_cache_dir": "/home/user/.cache/zls",
     "global_config_dir": "/etc/xdg",
     "local_config_dir": "/home/user/.config",
